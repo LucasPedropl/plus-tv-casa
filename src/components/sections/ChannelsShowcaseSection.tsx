@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Radio, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import {
@@ -86,21 +86,14 @@ export function ChannelsShowcaseSection() {
               key={channel.name}
               className="group relative flex flex-col items-center justify-center rounded-2xl border border-line bg-ink-raised p-4 text-center transition-all duration-300 hover:border-brand/50 hover:bg-ink-sunken hover:shadow-[0_12px_32px_-12px_hsl(var(--brand)/0.3)] hover:-translate-y-1"
             >
-              {/* Logo ou Badge estilizado */}
-              <div className="relative flex h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-ink-sunken p-2 border border-line/40">
-                {channel.logoSrc ? (
-                  <img
-                    src={channel.logoSrc}
-                    alt={`Logo ${channel.name}`}
-                    loading="lazy"
-                    className="max-h-full max-w-full object-contain filter group-hover:scale-105 transition-transform duration-300"
-                  />
-                ) : (
-                  <div className="flex items-center gap-1.5 text-brand-light font-bold text-xs tracking-wider uppercase">
-                    <Radio className="h-4 w-4 text-brand" />
-                    <span>{channel.name}</span>
-                  </div>
-                )}
+              {/* Logo do Canal */}
+              <div className="relative flex h-16 w-full items-center justify-center overflow-hidden rounded-xl bg-ink-sunken/90 p-2.5 border border-line/50 shadow-inner">
+                <img
+                  src={channel.logoSrc}
+                  alt={`Logo ${channel.name}`}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                />
               </div>
 
               {/* Informações */}

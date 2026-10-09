@@ -26,7 +26,7 @@ export function HeroHomeTv() {
 
             <h1 className="font-wide mt-4 text-3xl font-black tracking-tight text-cream sm:text-4xl md:text-5xl lg:leading-[1.15]">
               Todos os canais ao vivo direto na{' '}
-              <span className="text-brand-light underline decoration-brand/40 decoration-wavy decoration-2 underline-offset-6">
+              <span className="text-brand-light">
                 TV de casa
               </span>
             </h1>

@@ -107,5 +107,5 @@ export function buildWhatsAppUrl(tvCount: number): string {
   const text = encodeURIComponent(
     `Olá! Quero assinar o Plus TV para ${plan.tvCount} ${plan.tvCount === 1 ? 'TV' : 'TVs'} na minha casa (${plan.priceFormatted}/mês). Como faço para ativar na minha Smart TV?`
   )
-  return `https://wa.me/5511999999999?text=${text}`
+  return `https://wa.me/5531993585185?text=${text}`
 }

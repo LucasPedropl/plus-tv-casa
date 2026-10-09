@@ -5,21 +5,16 @@ export function FloatingWhatsAppButton() {
   return (
     <aside
       aria-label="Atendimento no WhatsApp"
-      className="fixed bottom-5 right-5 z-50 flex items-center"
+      className="fixed bottom-6 right-6 z-50 flex items-center"
     >
       <a
         href={SALES_CONTACT_URL}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar com atendente no WhatsApp"
-        className="group flex items-center gap-2.5 rounded-full bg-signal px-4 py-3 font-semibold text-ink shadow-[0_12px_32px_-8px_hsl(var(--signal)/0.65)] ring-2 ring-signal/50 transition-all duration-300 hover:scale-105 hover:brightness-110 focus-visible:outline-none focus-visible:ring-4"
+        className="group flex h-14 w-14 items-center justify-center rounded-full bg-signal text-ink shadow-[0_12px_32px_-6px_hsl(var(--signal)/0.7)] ring-2 ring-signal/50 transition-all duration-300 hover:scale-110 hover:brightness-110 focus-visible:outline-none focus-visible:ring-4 active:scale-95"
       >
-        <span className="flex h-6 w-6 items-center justify-center">
-          <MessageCircle className="h-5 w-5 fill-current" aria-hidden="true" />
-        </span>
-        <span className="hidden text-xs font-bold tracking-tight sm:inline">
-          Dúvidas? Fale no WhatsApp
-        </span>
+        <MessageCircle className="h-7 w-7 fill-current stroke-[2.2]" aria-hidden="true" />
       </a>
     </aside>
   )
