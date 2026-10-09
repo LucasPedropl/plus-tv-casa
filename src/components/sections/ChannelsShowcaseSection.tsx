@@ -84,29 +84,31 @@ export function ChannelsShowcaseSection() {
           {filteredChannels.map((channel) => (
             <div
               key={channel.name}
-              className="group relative flex flex-col items-center justify-center rounded-2xl border border-line bg-ink-raised p-4 text-center transition-all duration-300 hover:border-brand/50 hover:bg-ink-sunken hover:shadow-[0_12px_32px_-12px_hsl(var(--brand)/0.3)] hover:-translate-y-1"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink-raised p-2.5 sm:p-3 transition-all duration-300 hover:border-brand/60 hover:shadow-[0_16px_36px_-12px_hsl(var(--brand)/0.35)] hover:-translate-y-1"
             >
-              {/* Logo do Canal */}
-              <div className="relative flex h-16 w-full items-center justify-center overflow-hidden rounded-xl bg-ink-sunken/90 p-2.5 border border-line/50 shadow-inner">
+              {/* Moldura da Logo com fundo branco para contraste total e nitidez */}
+              <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-xl bg-white p-3 shadow-sm ring-1 ring-black/5">
                 <img
                   src={channel.logoSrc}
-                  alt={`Logo ${channel.name}`}
+                  alt={`Logotipo ${channel.name}`}
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                  className="max-h-full max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
 
-              {/* Informações */}
-              <div className="mt-3 w-full">
-                <h4 className="font-semibold text-xs text-cream truncate">
-                  {channel.name}
-                </h4>
-                <div className="mt-1 flex items-center justify-between text-[10px] text-cream-dim px-1">
-                  <span>{channel.category}</span>
-                  <span className="font-mono text-[9px] font-semibold text-signal">
+              {/* Informações do Canal */}
+              <div className="mt-2.5 px-1">
+                <div className="flex items-center justify-between gap-1">
+                  <h4 className="font-semibold text-xs text-cream truncate">
+                    {channel.name}
+                  </h4>
+                  <span className="font-mono text-[9px] font-bold text-signal shrink-0">
                     {channel.quality || 'Full HD'}
                   </span>
                 </div>
+                <p className="text-[11px] text-cream-dim truncate mt-0.5">
+                  {channel.category}
+                </p>
               </div>
             </div>
           ))}
