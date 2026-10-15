@@ -64,7 +64,7 @@ export function TvCompatibilitySection() {
           eyebrow="Compatibilidade Garantida"
           titleId="compatibility-title"
           title="Funciona na sua TV atual sem precisar comprar nada novo"
-          description="Se a sua TV tem acesso à internet e um navegador, o Plus TV roda perfeitamente nela."
+          description="Se a sua TV tem acesso à internet e um navegador, o Tv Studio Client roda perfeitamente nela."
           alignment="center"
         />
 

@@ -14,8 +14,8 @@ export function BrandLogo({ className, badgeText = 'Casa' }: BrandLogoProps) {
       </span>
       <div className="flex flex-col">
         <div className="flex items-center gap-1.5 leading-none">
-          <span className="font-wide text-xl font-black tracking-tight text-cream">
-            PLUS<span className="text-brand-light font-extrabold">TV</span>
+          <span className="font-wide text-lg sm:text-xl font-black tracking-tight text-cream whitespace-nowrap">
+            TV STUDIO <span className="text-brand-light font-extrabold">CLIENT</span>
           </span>
           {badgeText && (
             <span className="rounded-md border border-brand/30 bg-brand/10 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-brand-light">

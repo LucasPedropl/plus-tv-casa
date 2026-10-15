@@ -27,7 +27,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex max-w-site items-center justify-between px-5 sm:px-8">
-        <a href="#inicio" aria-label="Página inicial do Plus TV" className="focus-visible:outline-none">
+        <a href="#inicio" aria-label="Página inicial do Tv Studio Client" className="focus-visible:outline-none">
           <BrandLogo />
         </a>
 

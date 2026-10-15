@@ -238,7 +238,7 @@ export function PlansCalculatorSection() {
                 Operadora: R$ {(activePlan.cableComparisonPrice * 12).toFixed(0)}/ano
               </span>
               <span className="text-signal font-bold block text-sm whitespace-nowrap">
-                Plus TV: R$ {(activePlan.price * 12).toFixed(0)}/ano
+                Tv Studio Client: R$ {(activePlan.price * 12).toFixed(0)}/ano
               </span>
             </div>
           </div>

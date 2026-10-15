@@ -76,7 +76,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-line/60 pt-8 flex flex-col items-center justify-between gap-4 text-xs text-cream-dim sm:flex-row">
-          <p>© {currentYear} Plus TV. Todos os direitos reservados.</p>
+          <p>© {currentYear} Tv Studio Client. Todos os direitos reservados.</p>
           <p className="flex items-center gap-1.5">
             Feito para transformar o entretenimento da sua casa
             <Heart className="h-3.5 w-3.5 text-brand fill-current" />

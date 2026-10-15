@@ -7,7 +7,7 @@ export const HOME_FAQ: FaqItem[] = [
   {
     question: 'Preciso comprar algum aparelho, antena ou TV Box?',
     answer:
-      'Não! O Plus TV roda diretamente no navegador de internet da sua própria Smart TV (Samsung, LG, Android TV, Roku, Fire TV Stick, etc.). Você não precisa comprar nenhum equipamento caro, não precisa furar paredes e nem passar fios pretos pela casa.',
+      'Não! O Tv Studio Client roda diretamente no navegador de internet da sua própria Smart TV (Samsung, LG, Android TV, Roku, Fire TV Stick, etc.). Você não precisa comprar nenhum equipamento caro, não precisa furar paredes e nem passar fios pretos pela casa.',
   },
   {
     question: 'As TVs podem assistir canais diferentes ao mesmo tempo?',

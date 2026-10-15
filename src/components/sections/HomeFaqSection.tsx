@@ -13,7 +13,7 @@ export function HomeFaqSection() {
         <SectionHeader
           eyebrow="Tire Suas Dúvidas"
           titleId="faq-title"
-          title="Perguntas Frequentes sobre o Plus TV em Casa"
+          title="Perguntas Frequentes sobre o Tv Studio Client"
           description="Tudo o que você precisa saber sobre funcionamento, instalação e pagamento."
           alignment="center"
         />
