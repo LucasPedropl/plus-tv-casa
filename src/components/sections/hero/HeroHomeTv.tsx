@@ -61,7 +61,7 @@ export function HeroHomeTv() {
                   <Check className="h-3.5 w-3.5 stroke-[3]" />
                 </span>
                 <p className="text-sm text-cream font-medium">
-                  <strong>Preço Imbatível:</strong> 1 TV por <span className="text-brand-light font-bold">R$ 25,00</span> e cada TV adicional por apenas <span className="text-brand-light font-bold">R$ 18,00</span>.
+                  <strong>Preço Imbatível:</strong> 1 TV por <span className="text-brand-light font-bold whitespace-nowrap">R$ 25,00</span> e cada TV adicional por apenas <span className="text-brand-light font-bold whitespace-nowrap">R$ 18,00</span>.
                 </p>
               </div>
             </div>
@@ -71,9 +71,9 @@ export function HeroHomeTv() {
               <ButtonLink
                 href="#calculadora"
                 size="lg"
-                className="gap-2"
+                className="w-full sm:w-auto gap-2"
               >
-                <Tv className="h-5 w-5" />
+                <Tv className="h-5 w-5 shrink-0" />
                 <span>Simular Meu Plano (1 a 5 TVs)</span>
               </ButtonLink>
 
@@ -83,9 +83,9 @@ export function HeroHomeTv() {
                 rel="noopener noreferrer"
                 variant="secondary"
                 size="lg"
-                className="gap-2"
+                className="w-full sm:w-auto gap-2"
               >
-                <Zap className="h-4 w-4 text-signal" />
+                <Zap className="h-4 w-4 text-signal shrink-0" />
                 <span>Ativar Agora no WhatsApp</span>
               </ButtonLink>
             </div>

@@ -63,13 +63,13 @@ export function SiteFooter() {
               Planos Residenciais
             </h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>1 TV: R$ 25,00 / mês</li>
-              <li>2 TVs: R$ 43,00 / mês</li>
-              <li>3 TVs: R$ 61,00 / mês</li>
-              <li>4 TVs: R$ 79,00 / mês</li>
-              <li>5 TVs: R$ 97,00 / mês</li>
+              <li>1 TV: <span className="whitespace-nowrap font-medium text-cream">R$ 25,00 / mês</span></li>
+              <li>2 TVs: <span className="whitespace-nowrap font-medium text-cream">R$ 43,00 / mês</span></li>
+              <li>3 TVs: <span className="whitespace-nowrap font-medium text-cream">R$ 61,00 / mês</span></li>
+              <li>4 TVs: <span className="whitespace-nowrap font-medium text-cream">R$ 79,00 / mês</span></li>
+              <li>5 TVs: <span className="whitespace-nowrap font-medium text-cream">R$ 97,00 / mês</span></li>
               <li className="pt-2 text-xs text-brand-light font-medium">
-                *Cada TV adicional por apenas R$ 18,00
+                *Cada TV adicional por apenas <span className="whitespace-nowrap font-bold">R$ 18,00</span>
               </li>
             </ul>
           </div>

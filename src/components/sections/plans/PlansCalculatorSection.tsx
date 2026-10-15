@@ -38,7 +38,7 @@ export function PlansCalculatorSection() {
         className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-brand/10 blur-[130px]"
       />
 
-      <div className="relative mx-auto max-w-site px-5 sm:px-8">
+      <div className="relative mx-auto max-w-site px-4 sm:px-8">
         <SectionHeader
           eyebrow="Calculadora de TVs & Preços"
           titleId="calculator-title"
@@ -48,10 +48,10 @@ export function PlansCalculatorSection() {
         />
 
         {/* Bloco Principal da Calculadora */}
-        <div className="mt-12 mx-auto max-w-4xl rounded-[2rem] border border-brand/30 bg-ink-raised p-6 sm:p-10 shadow-[0_30px_90px_-40px_hsl(var(--brand)/0.5)]">
+        <div className="mt-12 mx-auto max-w-4xl rounded-[2rem] border border-brand/30 bg-ink-raised p-4 sm:p-8 md:p-10 shadow-[0_30px_90px_-40px_hsl(var(--brand)/0.5)]">
           {/* Seletor de Quantidade de TVs */}
           <div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
               <span className="font-mono text-xs uppercase tracking-wider text-brand-light font-semibold">
                 Passo 1: Quantas TVs você quer conectar?
               </span>
@@ -60,8 +60,8 @@ export function PlansCalculatorSection() {
               </span>
             </div>
 
-            {/* Botões Grandes de Seleção de TVs (1 a 5) */}
-            <div className="mt-4 grid grid-cols-5 gap-2 sm:gap-4">
+            {/* Botões Grandes de Seleção de TVs (1 a 5) - Ultra Responsivo para Mobile */}
+            <div className="mt-4 grid grid-cols-5 gap-1.5 sm:gap-4">
               {TV_PLANS.map((plan) => {
                 const isSelected = plan.tvCount === selectedTvCount
                 return (
@@ -70,24 +70,24 @@ export function PlansCalculatorSection() {
                     type="button"
                     onClick={() => setSelectedTvCount(plan.tvCount)}
                     className={cn(
-                      'group relative flex flex-col items-center justify-center rounded-2xl border p-3 sm:p-4 transition-all duration-200 select-none cursor-pointer',
+                      'group relative flex flex-col items-center justify-center rounded-xl sm:rounded-2xl border p-2 sm:p-4 transition-all duration-200 select-none cursor-pointer',
                       isSelected
                         ? 'border-brand bg-gradient-to-b from-brand/25 to-brand/10 text-cream shadow-[0_8px_24px_-8px_hsl(var(--brand)/0.7)] ring-2 ring-brand-light/40'
                         : 'border-line bg-ink-sunken/80 text-cream-dim hover:border-line hover:bg-ink-sunken hover:text-cream'
                     )}
                   >
                     {plan.badge && (
-                      <span className="absolute -top-2.5 hidden sm:inline-block rounded-full bg-brand px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-ink shadow">
+                      <span className="absolute -top-2.5 hidden sm:inline-block rounded-full bg-brand px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-ink shadow whitespace-nowrap">
                         {plan.badge}
                       </span>
                     )}
                     <Tv
                       className={cn(
-                        'h-6 w-6 transition-transform group-hover:scale-110 sm:h-7 sm:w-7',
+                        'h-5 w-5 sm:h-7 sm:w-7 transition-transform group-hover:scale-110',
                         isSelected ? 'text-brand-light' : 'text-cream-dim'
                       )}
                     />
-                    <span className="font-wide mt-2 text-lg font-black tracking-tight sm:text-2xl">
+                    <span className="font-wide mt-1.5 sm:mt-2 text-base font-black tracking-tight sm:text-2xl">
                       {plan.tvCount}
                     </span>
                     <span className="text-[10px] font-medium uppercase tracking-wider sm:text-xs text-cream-dim">
@@ -99,7 +99,7 @@ export function PlansCalculatorSection() {
             </div>
 
             {/* Slider de Apoio */}
-            <div className="mt-4 px-2">
+            <div className="mt-4 px-1 sm:px-2">
               <input
                 type="range"
                 min={1}
@@ -119,10 +119,10 @@ export function PlansCalculatorSection() {
           </div>
 
           {/* Resultado do Cálculo */}
-          <div className="mt-8 grid gap-6 rounded-2xl border border-line bg-ink-sunken p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div className="mt-8 grid gap-6 rounded-2xl border border-line bg-ink-sunken p-5 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             {/* Esquerda: Detalhes do Plano e Cômodos */}
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-xs font-semibold text-brand-light">
                   <Sparkles className="h-3.5 w-3.5" />
                   Plano Selecionado: {activePlan.label}
@@ -134,14 +134,14 @@ export function PlansCalculatorSection() {
                 )}
               </div>
 
-              <h3 className="font-wide mt-3 text-2xl font-black text-cream sm:text-3xl">
+              <h3 className="font-wide mt-3 text-xl font-black text-cream sm:text-3xl">
                 {activePlan.roomSuggestion}
               </h3>
 
               {/* Cômodos sugeridos da casa */}
               <div className="mt-4">
                 <p className="font-mono text-xs text-cream-dim uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <Home className="h-3.5 w-3.5 text-brand-light" />
+                  <Home className="h-3.5 w-3.5 text-brand-light shrink-0" />
                   Ambientes cobertos na sua residência:
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -150,42 +150,50 @@ export function PlansCalculatorSection() {
                       key={room}
                       className="inline-flex items-center gap-1.5 rounded-lg border border-brand/20 bg-brand/5 px-2.5 py-1 text-xs font-medium text-cream"
                     >
-                      <Tv className="h-3 w-3 text-brand-light" />
+                      <Tv className="h-3 w-3 text-brand-light shrink-0" />
                       TV {idx + 1}: {room}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Detalhamento da regra de cálculo */}
-              <div className="mt-5 border-t border-line/60 pt-4 text-xs text-cream-dim space-y-1">
+              {/* Detalhamento da regra de cálculo com quebras protegidas */}
+              <div className="mt-5 border-t border-line/60 pt-4 text-xs text-cream-dim space-y-1.5">
                 <p>
-                  • <strong>1ª Smart TV:</strong> R$ {BASE_TV_PRICE.toFixed(2).replace('.', ',')}
+                  • <strong>1ª Smart TV:</strong>{' '}
+                  <span className="whitespace-nowrap font-medium text-cream">
+                    R$ {BASE_TV_PRICE.toFixed(2).replace('.', ',')}
+                  </span>
                 </p>
                 {selectedTvCount > 1 && (
                   <p>
                     • <strong>{selectedTvCount - 1} {selectedTvCount - 1 === 1 ? 'TV adicional' : 'TVs adicionais'}:</strong>{' '}
-                    {(selectedTvCount - 1)} x R$ {EXTRA_TV_PRICE.toFixed(2).replace('.', ',')} = R${' '}
-                    {((selectedTvCount - 1) * EXTRA_TV_PRICE).toFixed(2).replace('.', ',')}
+                    <span className="whitespace-nowrap font-medium text-cream">
+                      {(selectedTvCount - 1)} x R$ {EXTRA_TV_PRICE.toFixed(2).replace('.', ',')} = R$ {((selectedTvCount - 1) * EXTRA_TV_PRICE).toFixed(2).replace('.', ',')}
+                    </span>
                   </p>
                 )}
                 <p className="text-brand-light font-semibold pt-1">
-                  Média de apenas {activePlan.pricePerTvFormatted} por TV ao mês!
+                  Média de apenas <span className="whitespace-nowrap font-bold">{activePlan.pricePerTvFormatted}</span> por TV ao mês!
                 </p>
               </div>
             </div>
 
-            {/* Direita: Valor e Botão de Ação */}
-            <div className="flex flex-col items-center justify-center rounded-xl border border-brand/40 bg-gradient-to-b from-brand/10 to-transparent p-6 text-center shadow-inner">
+            {/* Direita: Valor e Botão de Ação - ZERO quebra de R$ e valor */}
+            <div className="flex flex-col items-center justify-center rounded-xl border border-brand/40 bg-gradient-to-b from-brand/10 to-transparent p-5 sm:p-6 text-center shadow-inner">
               <span className="font-mono text-xs uppercase tracking-wider text-cream-dim">
                 Valor Total da Assinatura
               </span>
 
-              <div className="mt-2 flex items-baseline justify-center gap-1">
-                <span className="font-wide tabular-nums text-4xl font-black text-cream sm:text-5xl">
-                  {activePlan.priceFormatted}
+              {/* Preço em container whitespace-nowrap infalível */}
+              <div className="mt-2.5 flex items-baseline justify-center whitespace-nowrap select-none">
+                <span className="text-xl sm:text-2xl font-black text-brand-light mr-1.5">
+                  R$
                 </span>
-                <span className="text-sm font-semibold text-cream-dim">/mês</span>
+                <span className="font-wide tabular-nums text-4xl font-black text-cream sm:text-5xl tracking-tight">
+                  {activePlan.price.toFixed(2).replace('.', ',')}
+                </span>
+                <span className="ml-1 text-sm font-semibold text-cream-dim">/mês</span>
               </div>
 
               <span className="mt-1 text-xs text-signal font-medium">
@@ -197,10 +205,10 @@ export function PlansCalculatorSection() {
                 href={buildWhatsAppUrl(selectedTvCount)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3.5 text-sm font-bold text-ink shadow-[0_12px_24px_-8px_hsl(var(--signal)/0.6)] transition-all duration-200 hover:scale-102 hover:brightness-110 active:scale-98"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-signal px-4 py-3.5 text-sm font-bold text-ink shadow-[0_12px_24px_-8px_hsl(var(--signal)/0.6)] transition-all duration-200 hover:scale-102 hover:brightness-110 active:scale-98"
               >
-                <MessageCircle className="h-5 w-5 fill-current" />
-                <span>Assinar para {selectedTvCount} {selectedTvCount === 1 ? 'TV' : 'TVs'} Agora</span>
+                <MessageCircle className="h-5 w-5 fill-current shrink-0" />
+                <span className="truncate">Assinar para {selectedTvCount} {selectedTvCount === 1 ? 'TV' : 'TVs'} Agora</span>
               </a>
 
               <p className="mt-3 text-[11px] text-cream-dim">
@@ -210,26 +218,26 @@ export function PlansCalculatorSection() {
           </div>
 
           {/* Comparativo de Economia com TV a Cabo Tradicional */}
-          <div className="mt-8 rounded-xl border border-line bg-ink-sunken/60 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-8 rounded-xl border border-line bg-ink-sunken/60 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3.5">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-signal/15 text-signal">
                 <PiggyBank className="h-6 w-6" />
               </div>
               <div>
                 <h4 className="font-bold text-sm text-cream">
-                  Economize até R$ {annualSavings.toFixed(0)} por ano
+                  Economize até <span className="whitespace-nowrap text-signal">R$ {annualSavings.toFixed(0)}</span> por ano
                 </h4>
                 <p className="text-xs text-cream-dim">
-                  Uma operadora de TV tradicional cobraria cerca de R$ {activePlan.cableComparisonPrice.toFixed(0)}/mês para {selectedTvCount} pontos.
+                  Uma operadora de TV tradicional cobraria cerca de <span className="whitespace-nowrap">R$ {activePlan.cableComparisonPrice.toFixed(0)}/mês</span> para {selectedTvCount} {selectedTvCount === 1 ? 'ponto' : 'pontos'}.
                 </p>
               </div>
             </div>
 
-            <div className="shrink-0 font-mono text-xs text-right">
-              <span className="text-cream-dim line-through block">
+            <div className="w-full sm:w-auto font-mono text-xs text-left sm:text-right border-t sm:border-t-0 pt-2 sm:pt-0 border-line/50">
+              <span className="text-cream-dim line-through block whitespace-nowrap">
                 Operadora: R$ {(activePlan.cableComparisonPrice * 12).toFixed(0)}/ano
               </span>
-              <span className="text-signal font-bold block text-sm">
+              <span className="text-signal font-bold block text-sm whitespace-nowrap">
                 Plus TV: R$ {(activePlan.price * 12).toFixed(0)}/ano
               </span>
             </div>
@@ -244,7 +252,7 @@ export function PlansCalculatorSection() {
               className="rounded-2xl border border-line bg-ink-raised p-5 transition-colors hover:border-brand/40"
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10 text-brand-light">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10 text-brand-light shrink-0">
                   <Check className="h-4 w-4 stroke-[3]" />
                 </span>
                 <h4 className="font-semibold text-sm text-cream">{benefit.title}</h4>

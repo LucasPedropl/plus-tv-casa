@@ -106,7 +106,7 @@ export function HowItWorksSection() {
             target="_blank"
             rel="noopener noreferrer"
             size="md"
-            className="shrink-0"
+            className="w-full sm:w-auto shrink-0 text-center"
           >
             Falar com Atendente
           </ButtonLink>

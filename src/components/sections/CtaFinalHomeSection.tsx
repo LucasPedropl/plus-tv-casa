@@ -23,7 +23,7 @@ export function CtaFinalHomeSection() {
           </h2>
 
           <p className="mt-4 text-base text-cream-dim sm:text-lg max-w-2xl mx-auto">
-            Escolha de 1 a 5 TVs. 1ª TV por <strong className="text-cream">R$ 25,00/mês</strong> e cada TV adicional por apenas <strong className="text-cream">R$ 18,00</strong>.
+            Escolha de 1 a 5 TVs. 1ª TV por <strong className="text-cream whitespace-nowrap">R$ 25,00/mês</strong> e cada TV adicional por apenas <strong className="text-cream whitespace-nowrap">R$ 18,00</strong>.
             Ativação guiada em 1 minuto via WhatsApp.
           </p>
 

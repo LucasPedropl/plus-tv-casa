@@ -17,7 +17,7 @@ export const HOME_FAQ: FaqItem[] = [
   {
     question: 'Como funciona o cálculo de preço de 1 até 5 TVs?',
     answer:
-      'A 1ª TV custa R$ 25,00/mês. Cada TV adicional na mesma residência custa apenas R$ 18,00/mês. Por exemplo: 2 TVs saem por R$ 43,00 (25 + 18), 3 TVs por R$ 61,00 (25 + 18 + 18), 4 TVs por R$ 79,00 e 5 TVs por R$ 97,00/mês.',
+      'A 1ª TV custa R$\u00A025,00/mês. Cada TV adicional na mesma residência custa apenas R$\u00A018,00/mês. Por exemplo: 2 TVs saem por R$\u00A043,00 (25 + 18), 3 TVs por R$\u00A061,00 (25 + 18 + 18), 4 TVs por R$\u00A079,00 e 5 TVs por R$\u00A097,00/mês.',
   },
   {
     question: 'Tem contrato de fidelidade ou multa rescisória?',

@@ -1,7 +1,7 @@
 export const SITE_NAME = 'Plus TV'
 export const SITE_TAGLINE = 'Todos os canais ao vivo direto na TV da sua casa'
 export const SITE_DESCRIPTION =
-  'Esportes, filmes, séries, desenhos e notícias na sua Smart TV sem antenas, sem aparelhos e sem fidelidade. De 1 a 5 TVs na mesma casa a partir de R$ 25,00/mês.'
+  'Esportes, filmes, séries, desenhos e notícias na sua Smart TV sem antenas, sem aparelhos e sem fidelidade. De 1 a 5 TVs na mesma casa a partir de R$\u00A025,00/mês.'
 
 export const SALES_WHATSAPP_RAW = '5531993585185'
 export const SALES_WHATSAPP_DISPLAY = '(31) 9358-5185'
