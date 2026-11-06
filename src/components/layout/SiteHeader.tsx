@@ -57,7 +57,7 @@ export function SiteHeader() {
             Ver Preços
           </ButtonLink>
           <a
-            href={`${PLUS_WEB_URL}/login`}
+            href={`${PLUS_WEB_URL}/login/pessoa`}
             className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-ink-raised px-3.5 py-1.5 text-xs font-semibold text-cream hover:border-brand/40 hover:text-brand-light transition-colors"
           >
             <LogIn className="h-3.5 w-3.5 text-cream-dim" />
@@ -120,7 +120,7 @@ export function SiteHeader() {
                 <span>Assinar para Minha TV</span>
               </button>
               <a
-                href={`${PLUS_WEB_URL}/login`}
+                href={`${PLUS_WEB_URL}/login/pessoa`}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-line bg-ink-sunken py-2.5 px-4 text-sm font-semibold text-cream hover:border-brand/40 hover:text-brand-light transition-colors"
               >
                 <LogIn className="h-4 w-4 text-cream-dim" />

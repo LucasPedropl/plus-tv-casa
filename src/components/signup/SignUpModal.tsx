@@ -312,7 +312,7 @@ export function SignUpModal() {
         const s = toBase64Url(JSON.stringify(payload))
         window.location.assign(`${PLUS_WEB_URL}/entrar#s=${s}`)
       } else {
-        window.location.assign(`${PLUS_WEB_URL}/login?email=${encodeURIComponent(normalizedEmail)}`)
+        window.location.assign(`${PLUS_WEB_URL}/login/pessoa?email=${encodeURIComponent(normalizedEmail)}`)
       }
     } catch (err) {
       if (err instanceof PlusApiError && err.status === 409) {
@@ -444,7 +444,7 @@ export function SignUpModal() {
                       <p className="mt-1 text-xs text-cream-dim">{conflictError}</p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <a
-                          href={`${PLUS_WEB_URL}/login?email=${encodeURIComponent(email.trim().toLowerCase())}`}
+                          href={`${PLUS_WEB_URL}/login/pessoa?email=${encodeURIComponent(email.trim().toLowerCase())}`}
                           className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-3.5 py-1.5 text-xs font-bold text-ink hover:bg-brand-light transition-colors"
                         >
                           <span>Fazer Login no Plus</span>
@@ -903,7 +903,7 @@ export function SignUpModal() {
           </a>
 
           <a
-            href={`${PLUS_WEB_URL}/login`}
+            href={`${PLUS_WEB_URL}/login/pessoa`}
             className="text-brand-light hover:underline font-semibold"
           >
             Já tem conta? Entrar

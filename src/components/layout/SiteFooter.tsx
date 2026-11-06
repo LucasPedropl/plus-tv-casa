@@ -56,7 +56,7 @@ export function SiteFooter() {
               ))}
               <li>
                 <a
-                  href={`${PLUS_WEB_URL}/login`}
+                  href={`${PLUS_WEB_URL}/login/pessoa`}
                   className="transition-colors text-brand-light hover:text-cream font-medium"
                 >
                   Entrar na Conta
