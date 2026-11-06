@@ -16,8 +16,6 @@ import {
 import { useSignUpModal } from './SignUpModalContext'
 import {
   plusApi,
-  isDemoPlan,
-  planNeedsPayment,
   planScreensLabel,
   findMatchingPlanId,
   toBase64Url,
@@ -300,7 +298,7 @@ export function SignUpModal() {
       const login = res.login
 
       if (login && (login.access_token || login.token)) {
-        const next = planNeedsPayment(selectedPlan) ? '/assinatura' : '/telas'
+        const next = '/assinatura'
         const payload = {
           access_token: login.access_token || login.token,
           refresh_token: login.refresh_token,
@@ -763,7 +761,6 @@ export function SignUpModal() {
                     <div className="space-y-2.5 max-h-[46vh] overflow-y-auto pr-1">
                       {plans.map((plan) => {
                         const isSelected = plan.id === selectedPlanId
-                        const demo = isDemoPlan(plan)
                         const screens = planScreensLabel(plan)
 
                         return (
@@ -792,44 +789,25 @@ export function SignUpModal() {
                               <div>
                                 <div className="flex items-center gap-2">
                                   <h4 className="font-bold text-sm text-cream">{plan.name}</h4>
-                                  {demo ? (
-                                    <span className="rounded-full bg-signal px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-ink">
-                                      Teste grátis
-                                    </span>
-                                  ) : (
-                                    <span className="rounded-full border border-brand/30 bg-brand/10 px-2 py-0.5 font-mono text-[9px] font-bold text-brand-light">
-                                      {screens}
-                                    </span>
-                                  )}
+                                  <span className="rounded-full border border-brand/30 bg-brand/10 px-2 py-0.5 font-mono text-[9px] font-bold text-brand-light">
+                                    {screens}
+                                  </span>
                                 </div>
 
                                 <p className="mt-1 text-xs text-cream-dim line-clamp-1">
                                   {plan.description ||
-                                    (demo
-                                      ? 'Teste todos os canais na sua Smart TV sem pagar nada agora.'
-                                      : 'Todos os canais ao vivo, controle dos pais e liberação rápida.')}
+                                    'Todos os canais ao vivo, controle dos pais e liberação rápida.'}
                                 </p>
                               </div>
                             </div>
 
                             <div className="text-right shrink-0 pl-3">
-                              {demo ? (
-                                <div>
-                                  <span className="font-wide text-lg font-black text-signal">
-                                    Grátis
-                                  </span>
-                                  <span className="block text-[10px] text-cream-dim">
-                                    {plan.trial_days === 1 ? '1 dia' : `${plan.trial_days} dias`}
-                                  </span>
-                                </div>
-                              ) : (
-                                <div>
-                                  <span className="font-wide text-lg font-black text-cream">
-                                    R$ {plan.monthly_price.toFixed(2).replace('.', ',')}
-                                  </span>
-                                  <span className="block text-[10px] text-cream-dim">/ mês</span>
-                                </div>
-                              )}
+                              <div>
+                                <span className="font-wide text-lg font-black text-cream">
+                                  R$ {plan.monthly_price.toFixed(2).replace('.', ',')}
+                                </span>
+                                <span className="block text-[10px] text-cream-dim">/ mês</span>
+                              </div>
                             </div>
                           </div>
                         )
@@ -841,17 +819,10 @@ export function SignUpModal() {
 
                   {selectedPlan && (
                     <div className="rounded-xl border border-line bg-ink-sunken/60 p-3 text-xs text-cream-dim">
-                      {isDemoPlan(selectedPlan) ? (
-                        <p>
-                          🎉 <strong>Plano de Teste Selecionado:</strong> Você terá acesso gratuito
-                          por {selectedPlan.trial_days} dias liberado imediatamente após o cadastro.
-                        </p>
-                      ) : (
-                        <p>
-                          💳 <strong>Plano Selecionado:</strong> O pagamento via PIX é realizado com
-                          segurança diretamente no painel do Plus após a conclusão.
-                        </p>
-                      )}
+                      <p>
+                        💳 <strong>Plano Selecionado:</strong> O pagamento via PIX é realizado com
+                        segurança diretamente no painel do Plus após a conclusão.
+                      </p>
                     </div>
                   )}
 

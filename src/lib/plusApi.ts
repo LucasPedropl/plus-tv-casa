@@ -6,7 +6,6 @@ export interface ApiRegisterPlan {
   name: string
   description?: string
   monthly_price: number
-  trial_days?: number
   screens_cap?: number
   status: string
   applications?: { application_code: string }[]
@@ -91,20 +90,15 @@ async function fetchJson<T>(endpoint: string, init?: RequestInit): Promise<T> {
   return body as T
 }
 
-export function isDemoPlan(plan: ApiRegisterPlan): boolean {
+function isDemoPlan(plan: ApiRegisterPlan): boolean {
   return (
-    (plan.trial_days != null && plan.trial_days > 0) ||
     plan.code === 'plus-demo' ||
+    plan.monthly_price <= 0 ||
     /demo/i.test(plan.name)
   )
 }
 
-export function planNeedsPayment(plan: ApiRegisterPlan): boolean {
-  return !isDemoPlan(plan) && (plan.monthly_price ?? 0) > 0
-}
-
 export function planScreensLabel(plan: ApiRegisterPlan): string {
-  if (isDemoPlan(plan)) return '1 TV (Demo)'
   const cap = plan.screens_cap || 1
   return cap === 1 ? '1 Smart TV' : `${cap} Smart TVs`
 }
@@ -132,7 +126,6 @@ export function parseApiPlan(raw: unknown): ApiRegisterPlan | null {
     name,
     description: String(o.description ?? '').trim() || undefined,
     monthly_price: Number(o.monthly_price) || 0,
-    trial_days: Number(o.trial_days) || 0,
     screens_cap: Number(o.screens_cap) || 0,
     status: String(o.status ?? 'active'),
     applications,
@@ -149,31 +142,23 @@ export function filterPlusWebPlans(plans: ApiRegisterPlan[]): ApiRegisterPlan[] 
 }
 
 export function sortApiPlans(plans: ApiRegisterPlan[]): ApiRegisterPlan[] {
-  return [...plans].sort((a, b) => {
-    const isDemoA = isDemoPlan(a)
-    const isDemoB = isDemoPlan(b)
-    if (isDemoA && !isDemoB) return 1 // show paid plans first, demo as option or vice-versa
-    if (!isDemoA && isDemoB) return -1
-    return a.monthly_price - b.monthly_price
-  })
+  return [...plans].sort((a, b) => a.monthly_price - b.monthly_price)
 }
 
 export function findMatchingPlanId(plans: ApiRegisterPlan[], tvCount?: number): string {
   if (plans.length === 0) return ''
-  const paidPlans = plans.filter((p) => !isDemoPlan(p))
-  const candidates = paidPlans.length > 0 ? paidPlans : plans
 
   if (tvCount && tvCount > 0) {
-    const matching = candidates.filter((p) => (p.screens_cap ?? 0) >= tvCount)
+    const matching = plans.filter((p) => (p.screens_cap ?? 0) >= tvCount)
     if (matching.length > 0) {
       return [...matching].sort((a, b) => a.monthly_price - b.monthly_price)[0].id
     }
     // If no plan has screens_cap >= tvCount, choose the one with highest screens_cap
-    return [...candidates].sort((a, b) => (b.screens_cap ?? 0) - (a.screens_cap ?? 0))[0].id
+    return [...plans].sort((a, b) => (b.screens_cap ?? 0) - (a.screens_cap ?? 0))[0].id
   }
 
-  // Default: cheapest paid plan
-  return [...candidates].sort((a, b) => a.monthly_price - b.monthly_price)[0].id
+  // Default: cheapest plan
+  return [...plans].sort((a, b) => a.monthly_price - b.monthly_price)[0].id
 }
 
 export function toBase64Url(str: string): string {
@@ -195,7 +180,8 @@ export const plusApi = {
     const parsed = list
       .map(parseApiPlan)
       .filter((p): p is ApiRegisterPlan => p !== null)
-    return filterPlusWebPlans(parsed)
+    const activePlusWeb = filterPlusWebPlans(parsed).filter((p) => !isDemoPlan(p))
+    return sortApiPlans(activePlusWeb)
   },
 
   sendCode(email: string, cpf: string): Promise<{ sent_to: string; expires_in_seconds: number }> {
