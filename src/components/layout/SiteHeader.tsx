@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Tv } from 'lucide-react'
+import { Menu, X, Tv, LogIn } from 'lucide-react'
 import { BrandLogo } from '@/components/brand/BrandLogo'
 import { ButtonLink } from '@/components/ui/ButtonLink'
-import { NAV_ITEMS, SALES_CONTACT_URL } from '@/content/site'
+import { NAV_ITEMS, PLUS_WEB_URL } from '@/content/site'
+import { useSignUpModal } from '@/components/signup/SignUpModalContext'
 import { cn } from '@/lib/cn'
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { openSignUp } = useSignUpModal()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,16 +56,21 @@ export function SiteHeader() {
           >
             Ver Preços
           </ButtonLink>
-          <ButtonLink
-            href={SALES_CONTACT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            size="sm"
-            className="gap-1.5"
+          <a
+            href={`${PLUS_WEB_URL}/login`}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-ink-raised px-3.5 py-1.5 text-xs font-semibold text-cream hover:border-brand/40 hover:text-brand-light transition-colors"
+          >
+            <LogIn className="h-3.5 w-3.5 text-cream-dim" />
+            <span>Entrar</span>
+          </a>
+          <button
+            type="button"
+            onClick={() => openSignUp()}
+            className="inline-flex items-center justify-center rounded-lg bg-brand px-3.5 py-1.5 text-xs font-semibold text-ink shadow-[0_12px_28px_-10px_hsl(var(--brand)/0.6)] hover:bg-brand-light active:scale-[0.98] transition-all gap-1.5 cursor-pointer"
           >
             <Tv className="h-3.5 w-3.5" />
             <span>Assinar para Minha TV</span>
-          </ButtonLink>
+          </button>
         </div>
 
         {/* Mobile menu trigger */}
@@ -101,14 +108,24 @@ export function SiteHeader() {
               >
                 Calcular Preço por TV
               </ButtonLink>
-              <ButtonLink
-                href={SALES_CONTACT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full"
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  openSignUp()
+                }}
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-2.5 px-4 text-sm font-semibold text-ink shadow-[0_12px_28px_-10px_hsl(var(--brand)/0.6)] hover:bg-brand-light transition-colors cursor-pointer"
               >
-                Pedir Teste no WhatsApp
-              </ButtonLink>
+                <Tv className="h-4 w-4" />
+                <span>Assinar para Minha TV</span>
+              </button>
+              <a
+                href={`${PLUS_WEB_URL}/login`}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-line bg-ink-sunken py-2.5 px-4 text-sm font-semibold text-cream hover:border-brand/40 hover:text-brand-light transition-colors"
+              >
+                <LogIn className="h-4 w-4 text-cream-dim" />
+                <span>Entrar na Minha Conta</span>
+              </a>
             </div>
           </nav>
         </div>

@@ -11,6 +11,14 @@ export const SALES_CONTACT_URL =
 
 export const APP_TV_CONNECT_URL = 'https://plus.bixs.com.br/tv'
 
+export const PLUS_WEB_URL =
+  ((import.meta as { env?: Record<string, string> }).env?.VITE_PLUS_WEB_URL ||
+    'https://plus.bixs.com.br').replace(/\/+$/, '')
+
+export const API_BASE_URL =
+  ((import.meta as { env?: Record<string, string> }).env?.VITE_API_BASE_URL ||
+    'https://api.bixs.com.br').replace(/\/+$/, '')
+
 export const SECTION_IDS = {
   hero: 'inicio',
   plans: 'precos',

@@ -1,6 +1,6 @@
 import { Tv, MessageCircle, Heart } from 'lucide-react'
 import { BrandLogo } from '@/components/brand/BrandLogo'
-import { NAV_ITEMS, SALES_CONTACT_URL, APP_TV_CONNECT_URL } from '@/content/site'
+import { NAV_ITEMS, SALES_CONTACT_URL, APP_TV_CONNECT_URL, PLUS_WEB_URL } from '@/content/site'
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear()
@@ -54,6 +54,14 @@ export function SiteFooter() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={`${PLUS_WEB_URL}/login`}
+                  className="transition-colors text-brand-light hover:text-cream font-medium"
+                >
+                  Entrar na Conta
+                </a>
+              </li>
             </ul>
           </div>
 

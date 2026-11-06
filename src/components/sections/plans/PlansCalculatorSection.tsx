@@ -2,7 +2,6 @@ import { useState } from 'react'
 import {
   Check,
   Home,
-  MessageCircle,
   PiggyBank,
   Sparkles,
   Tv,
@@ -11,14 +10,15 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import {
   TV_PLANS,
   PLAN_BENEFITS,
-  buildWhatsAppUrl,
   BASE_TV_PRICE,
   EXTRA_TV_PRICE,
 } from '@/content/plans'
 import { SECTION_IDS } from '@/content/site'
+import { useSignUpModal } from '@/components/signup/SignUpModalContext'
 import { cn } from '@/lib/cn'
 
 export function PlansCalculatorSection() {
+  const { openSignUp } = useSignUpModal()
   const [selectedTvCount, setSelectedTvCount] = useState<number>(2) // Default 2 TVs (mais comum)
 
   const activePlan =
@@ -200,19 +200,18 @@ export function PlansCalculatorSection() {
                 Sem taxas extras · Sem fidelidade
               </span>
 
-              {/* Botão de WhatsApp com mensagem montada */}
-              <a
-                href={buildWhatsAppUrl(selectedTvCount)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-signal px-4 py-3.5 text-sm font-bold text-ink shadow-[0_12px_24px_-8px_hsl(var(--signal)/0.6)] transition-all duration-200 hover:scale-102 hover:brightness-110 active:scale-98"
+              {/* Botão de Contratação */}
+              <button
+                type="button"
+                onClick={() => openSignUp({ tvCount: selectedTvCount })}
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-signal px-4 py-3.5 text-sm font-bold text-ink shadow-[0_12px_24px_-8px_hsl(var(--signal)/0.6)] transition-all duration-200 hover:scale-102 hover:brightness-110 active:scale-98 cursor-pointer"
               >
-                <MessageCircle className="h-5 w-5 fill-current shrink-0" />
+                <Tv className="h-5 w-5 shrink-0" />
                 <span className="truncate">Assinar para {selectedTvCount} {selectedTvCount === 1 ? 'TV' : 'TVs'} Agora</span>
-              </a>
+              </button>
 
               <p className="mt-3 text-[11px] text-cream-dim">
-                Ativação guiada em 1 minuto via WhatsApp
+                Ativação imediata sem fidelidade
               </p>
             </div>
           </div>

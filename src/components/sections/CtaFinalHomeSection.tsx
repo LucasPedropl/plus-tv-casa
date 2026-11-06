@@ -1,8 +1,10 @@
-import { MessageCircle, ShieldCheck, Sparkles, Tv, Zap } from 'lucide-react'
+import { ShieldCheck, Sparkles, Tv, Zap } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/ButtonLink'
-import { SALES_CONTACT_URL } from '@/content/site'
+import { useSignUpModal } from '@/components/signup/SignUpModalContext'
 
 export function CtaFinalHomeSection() {
+  const { openSignUp } = useSignUpModal()
+
   return (
     <section className="relative overflow-hidden border-t border-line bg-gradient-to-b from-ink via-ink-raised to-ink-sunken py-16 sm:py-24">
       {/* Luz ambiente */}
@@ -28,17 +30,14 @@ export function CtaFinalHomeSection() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <ButtonLink
-              href={SALES_CONTACT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="signal"
-              size="lg"
-              className="w-full sm:w-auto gap-2"
+            <button
+              type="button"
+              onClick={() => openSignUp()}
+              className="inline-flex items-center justify-center font-semibold transition-all duration-200 select-none text-center cursor-pointer rounded-xl px-7 py-3.5 text-base shadow-lg bg-signal text-ink font-bold hover:brightness-110 shadow-[0_12px_28px_-10px_hsl(var(--signal)/0.5)] active:scale-[0.98] w-full sm:w-auto gap-2"
             >
-              <MessageCircle className="h-5 w-5 fill-current" />
-              <span>Pedir Ativação no WhatsApp</span>
-            </ButtonLink>
+              <Tv className="h-5 w-5 shrink-0" />
+              <span>Assinar Agora</span>
+            </button>
 
             <ButtonLink
               href="#calculadora"

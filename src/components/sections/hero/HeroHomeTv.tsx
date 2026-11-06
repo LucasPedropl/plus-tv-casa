@@ -1,9 +1,12 @@
 import { Check, ShieldCheck, Sparkles, Tv, Zap } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import { HomeTvFrame } from '@/components/mockups/HomeTvFrame'
-import { SALES_CONTACT_URL, SECTION_IDS } from '@/content/site'
+import { SECTION_IDS } from '@/content/site'
+import { useSignUpModal } from '@/components/signup/SignUpModalContext'
 
 export function HeroHomeTv() {
+  const { openSignUp } = useSignUpModal()
+
   return (
     <section
       id={SECTION_IDS.hero}
@@ -68,25 +71,23 @@ export function HeroHomeTv() {
 
             {/* CTAs */}
             <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-              <ButtonLink
-                href="#calculadora"
-                size="lg"
-                className="w-full sm:w-auto gap-2"
+              <button
+                type="button"
+                onClick={() => openSignUp()}
+                className="inline-flex items-center justify-center font-semibold transition-all duration-200 select-none text-center cursor-pointer rounded-xl px-7 py-3.5 text-base shadow-lg bg-brand text-ink hover:bg-brand-light shadow-[0_12px_28px_-10px_hsl(var(--brand)/0.6)] active:scale-[0.98] w-full sm:w-auto gap-2"
               >
                 <Tv className="h-5 w-5 shrink-0" />
-                <span>Simular Meu Plano (1 a 5 TVs)</span>
-              </ButtonLink>
+                <span>Começar Agora</span>
+              </button>
 
               <ButtonLink
-                href={SALES_CONTACT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#calculadora"
                 variant="secondary"
                 size="lg"
                 className="w-full sm:w-auto gap-2"
               >
                 <Zap className="h-4 w-4 text-signal shrink-0" />
-                <span>Ativar Agora no WhatsApp</span>
+                <span>Simular Meu Plano (1 a 5 TVs)</span>
               </ButtonLink>
             </div>
 
